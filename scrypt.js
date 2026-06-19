@@ -20,24 +20,51 @@ document.addEventListener('DOMContentLoaded', function () {
         var formStatus = document.getElementById('form-status');
 
         if (admissionForm && formStatus) {
-            admissionForm.addEventListener('submit', function (event) {
+            admissionForm.addEventListener('submit', async function (event) {
                 event.preventDefault();
 
-                // If browser validation fails, the submit event will still fire in many cases.
-                // Check validity explicitly before showing success.
                 if (!admissionForm.checkValidity()) {
                     formStatus.textContent = 'Please fill in all required fields correctly.';
                     formStatus.className = 'form-status error';
+                    formStatus.style.display = 'block';
+                    formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     return;
                 }
 
-                formStatus.textContent = 'APPLICATION SUBMITTED SUCCESSFULLY! THANK YOU.';
-                formStatus.className = 'form-status success';
+                formStatus.textContent = 'Sending application...';
+                formStatus.className = 'form-status';
                 formStatus.style.display = 'block';
                 formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-                // Optionally reset form fields to clear the form after successful submission.
-                admissionForm.reset();
+                // Google Forms submission endpoint
+                var googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSchoDb4W7Qvp1MDkSGn0z3qP0SJmYPmbjFB3iXPdJ0_ggfE-Q/formResponse';
+                var formParams = new URLSearchParams();
+
+                // Map fields to entry IDs
+                formParams.append('entry.46245387', document.getElementById('name').value);  // Student Name
+                formParams.append('entry.1669395904', document.getElementById('dob').value);    // Date of Birth
+                formParams.append('entry.780916919', document.getElementById('grade').value);  // Grade
+                formParams.append('entry.1698393657', document.getElementById('father_name').value); // Father's Name
+                formParams.append('entry.1978971168', document.getElementById('mother_name').value); // Mother's Name
+                formParams.append('entry.1561475558', document.getElementById('email').value);  // Email
+                formParams.append('entry.1992450251', document.getElementById('phone').value);  // Phone
+
+                try {
+                    var response = await fetch(googleFormUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        body: formParams
+                    });
+
+                    formStatus.textContent = 'APPLICATION SUBMITTED SUCCESSFULLY! THANK YOU.';
+                    formStatus.className = 'form-status success';
+                    formStatus.style.display = 'block';
+                    admissionForm.reset();
+                } catch (error) {
+                    formStatus.textContent = 'Error: ' + (error.message || 'Unable to submit right now. Please try again later.');
+                    formStatus.className = 'form-status error';
+                    formStatus.style.display = 'block';
+                }
             });
         }
     }
