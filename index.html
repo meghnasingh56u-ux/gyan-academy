@@ -1,151 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html id="atomic" lang="en-US">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gyan Academy School</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-dns-prefetch-control" content="on">
+    <meta name="refferer" content="origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- This is the text that appears on the browser tab,google search tab and search results -->
+    <title>Gyan Academy School - Official School Website</title>
+    <!-- This is the summary snippet that appears on the browser tab, google search tab and search results -->
+    <meta name="description" content="Welcome to Gyan Academy School, a leading educational institution committed to providing quality education and fostering holistic development.">
+    <link rel="stylesheet" href="style.css">
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
-
-body{
-    background:#f4f4f4;
-}
-
-header{
-    background:#0066cc;
-    color:white;
-    padding:20px;
-    text-align:center;
-}
-
-nav{
-    background:#004c99;
-    padding:10px;
-    text-align:center;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    margin:15px;
-    font-weight:bold;
-}
-
-.hero{
-    background:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200') center/cover;
-    height:400px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    text-align:center;
-}
-
-.hero h1{
-    background:rgba(0,0,0,0.6);
-    padding:20px;
-    border-radius:10px;
-}
-
-section{
-    padding:40px;
-    text-align:center;
-}
-
-.cards{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:20px;
-}
-
-.card{
-    background:white;
-    width:300px;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-footer{
-    background:#003366;
-    color:white;
-    text-align:center;
-    padding:15px;
-    margin-top:20px;
-}
-</style>
 </head>
 
 <body>
-
-<header>
-    <h1>Gyan Academy School</h1>
-    <p>Learning Today, Leading Tomorrow</p>
-</header>
-
-<nav>
-    <a href="#about">About</a>
-    <a href="#courses">Courses</a>
-    <a href="#teachers">Teachers</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<div class="hero">
-    <h1>Welcome to Gyan Academy School</h1>
-</div>
-
-<section id="about">
-    <h2>About Our School</h2>
-    <p>
-        We provide quality education with modern facilities,
-        experienced teachers, and a positive learning environment.
-    </p>
-</section>
-
-<section id="courses">
-    <h2>Our Facilities</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Smart Classes</h3>
-            <p>Interactive digital learning environment.</p>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <div class="brand-mark">G</div>
+                <div>
+                    <h1>Gyan Academy</h1>
+                    <p>Learning Today, Leading Tomorrow</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#academics">Academics</a>
+                <a href="#facilities">Facilities</a>
+                <a href="#events">Events</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
+    </header>
 
-        <div class="card">
-            <h3>Library</h3>
-            <p>Thousands of books and learning resources.</p>
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <span class="eyebrow">Welcome to Gyan Academy School</span>
+            <h2>Inspiring Excellence in Education</h2>
+            <p>We prepare students to excel academically and grow into confident leaders.</p>
+            <button type="button" class="btn-primary" id="apply-admission-btn">Apply Admission</button>
+            <h4>Form To Apply For Admission</h4>
+            <div id="admission-form-container" class="hidden">
+                <form action="#contact" method="post">
+                    <div>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="date" name="dob" placeholder="Date of Birth" required>
+                        <input type="number" name="grade" placeholder="Grade Applying For" required>
+                        <input type="text" name="mother_name" placeholder="Mother's Name" required>
+                        <input type="text" name="father_name" placeholder="Father's Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="tel" name="phone" placeholder="Your Phone Number">
+                    </div>
+                    <div class="gender-group">
+                        <label>
+                            <input type="radio" id="male" name="gender" value="male" required>
+                            Male
+                        </label>
+                        <label>
+                            <input type="radio" id="female" name="gender" value="female" required>
+                            Female
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary">Submit Application</button>
+                </form>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>Sports</h3>
-            <p>Indoor and outdoor sports facilities.</p>
+    <section class="stats">
+        <div class="container stats-grid">
+            <div class="stat-card">
+                <h3>1,500+</h3>
+                <p>Students Enrolled</p>
+            </div>
+            <div class="stat-card">
+                <h3>120+</h3>
+                <p>Expert Teachers</p>
+            </div>
+            <div class="stat-card">
+                <h3>25+</h3>
+                <p>Years of Experience</p>
+            </div>
+            <div class="stat-card">
+                <h3>98%</h3>
+                <p>Pass Rate</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+    <!-- Image Carousel Section -->
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <img id="carousel-image" src="images/image1.jpg" alt="Gyan Academy Gallery" class="carousel-image">
+            <div class="carousel-controls">
+                <button class="carousel-btn prev" id="prev-btn">&#10094;</button>
+                <button class="carousel-btn next" id="next-btn">&#10095;</button>
+            </div>
+            <div class="carousel-indicators" id="carousel-indicators"></div>
+        </div>
+    </section>
 
-<section id="teachers">
-    <h2>Our Teachers</h2>
-    <p>Highly qualified and experienced faculty members.</p>
-</section>
+    <section class="section about-section" id="about">
+        <div class="container split-grid">
+            <div>
+                <p class="section-label">About Gyan Academy</p>
+                <h2>Education with Values and Vision</h2>
+                <p>Gyan Academy School is dedicated to providing a nurturing academic environment where students can
+                    thrive. Our curriculum blends strong fundamentals with modern teaching methods, supported by caring
+                    faculty and excellent facilities.</p>
+                <p>We believe in fostering creativity, critical thinking, and character development alongside academic
+                    excellence. Our students are encouraged to explore their passions and develop the skills they need
+                    to succeed in a rapidly changing world.</p>
+                <p>We love to see our students grow and succeed in their academic journey.</p>
+                <a class="btn-secondary" href="#contact">Learn More</a>
+            </div>
+            <div class="about-box">
+                <p><strong>Our Mission:</strong> To develop students who are academically strong, ethically grounded,
+                    and confident in pursuing their ambitions.</p>
+                <p><strong>Our Vision:</strong> To become a leading school in the region by delivering exceptional
+                    education and holistic development.</p>
+            </div>
+        </div>
+    </section>
 
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Address: Gyan Academy, Jalesar road, Sasni, Hathras , UP</p>
-</section>
+    <section class="section programs" id="academics">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Academics</p>
+                <h2>Comprehensive programs for every learner</h2>
+            </div>
+            <div class="cards-grid">
+                <article class="feature-card">
+                    <h3>Digital Learning</h3>
+                    <p>Digital learning spaces designed to support interactive lessons and modern pedagogy.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Science & Labs</h3>
+                    <p>Well-equipped labs for physics, chemistry, biology and computer science.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Co-curricular Activities</h3>
+                    <p>Sports, arts, and clubs that help students explore interests beyond the classroom.</p>
+                    <p>Sports facilities for various indoor and outdoor activities.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Library & Resources</h3>
+                    <p>A rich library collection.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>CCTV </h3>
+                    <p>Comprehensive surveillance system to ensure a safe learning environment.</p>
+                </article>
+            </div>
+        </div>
+    </section>
 
-<footer>
-    <p>© 2026 Gyan Academy School. All Rights Reserved.</p>
-</footer>
+    <section class="section facilities" id="facilities">
+        <div class="container split-grid reverse">
+            <div class="about-box">
+                <p><strong>Facilities:</strong></p>
+                <ul>
+                    <li>Library with a wide collection of books</li>
+                    <li>Modern computer lab and STEM resources</li>
+                    <li>Indoor and outdoor sports grounds</li>
+                    <li>Safe and welcoming campus environment</li>
+                </ul>
+            </div>
+            <div>
+                <p class="section-label">Our Campus</p>
+                <h2>Designed for comfort, safety, and learning</h2>
+                <p>Our campus features spacious classrooms, creative learning areas, and dedicated activity zones that
+                    support both academic excellence and student wellbeing.</p>
+            </div>
+        </div>
+    </section>
 
-</body>
-</html>
-<body>
+    <section class="section events" id="events">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Events</p>
+                <h2>Engaging programs throughout the year</h2>
+            </div>
+            <div class="cards-grid">
+                <article class="feature-card">
+                    <h3>Annual Sports Day</h3>
+                    <p>Celebrating teamwork, fitness, and athletic achievement.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Cultural Festival</h3>
+                    <p>A showcase of student talent in music, dance, and drama.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Awards & Recognition</h3>
+                    <p>Honoring academic, creative, and leadership excellence.</p>
+                </article>
+            </div>
+        </div>
+    </section>
 
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Contact Us</p>
+                <h2>Ready to join Gyan Academy?</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Visit Us</h3>
+                    <p>Jalesar Road, Sasni, Hathras, Uttar Pradesh, India</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Email</h3>
+                    <p>info@gyanacademy.com</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Phone</h3>
+                    <p>+91 9719686985</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>� 2026 Gyan Academy School. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <script src="scrypt.js"></script>
 </body>
 </html>
