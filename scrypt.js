@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var formStatus = document.getElementById('form-status');
 
         if (admissionForm && formStatus) {
-            admissionForm.addEventListener('submit', async function (event) {
+            admissionForm.addEventListener('submit', function (event) {
                 event.preventDefault();
 
                 if (!admissionForm.checkValidity()) {
@@ -36,35 +36,53 @@ document.addEventListener('DOMContentLoaded', function () {
                 formStatus.style.display = 'block';
                 formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-                // Google Forms submission endpoint
-                var googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSchoDb4W7Qvp1MDkSGn0z3qP0SJmYPmbjFB3iXPdJ0_ggfE-Q/formResponse';
-                var formParams = new URLSearchParams();
+                // Create an invisible iframe for form submission
+                var iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.name = 'hidden_iframe_' + Date.now();
+                document.body.appendChild(iframe);
 
-                // Map fields to entry IDs
-                formParams.append('entry.46245387', document.getElementById('name').value);  // Student Name
-                formParams.append('entry.1669395904', document.getElementById('dob').value);    // Date of Birth
-                formParams.append('entry.780916919', document.getElementById('grade').value);  // Grade
-                formParams.append('entry.1698393657', document.getElementById('father_name').value); // Father's Name
-                formParams.append('entry.1978971168', document.getElementById('mother_name').value); // Mother's Name
-                formParams.append('entry.1561475558', document.getElementById('email').value);  // Email
-                formParams.append('entry.1992450251', document.getElementById('phone').value);  // Phone
+                // Create hidden form for submission
+                var hiddenForm = document.createElement('form');
+                hiddenForm.method = 'POST';
+                hiddenForm.action = 'https://docs.google.com/forms/d/e/1FAIpQLSchoDb4W7Qvp1MDkSGn0z3qP0SJmYPmbjFB3iXPdJ0_ggfE-Q/formResponse';
+                hiddenForm.target = iframe.name;
 
-                try {
-                    var response = await fetch(googleFormUrl, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        body: formParams
-                    });
+                // Add form fields
+                var fields = {
+                    'entry.46245387': document.getElementById('name').value,
+                    'entry.1669395904': document.getElementById('dob').value,
+                    'entry.780916919': document.getElementById('grade').value,
+                    'entry.1698393657': document.getElementById('father_name').value,
+                    'entry.1978971168': document.getElementById('mother_name').value,
+                    'entry.1561475558': document.getElementById('email').value,
+                    'entry.1992450251': document.getElementById('phone').value
+                };
 
+                for (var key in fields) {
+                    var input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = key;
+                    input.value = fields[key];
+                    hiddenForm.appendChild(input);
+                }
+
+                document.body.appendChild(hiddenForm);
+                hiddenForm.submit();
+
+                // Show success message after submission
+                setTimeout(function () {
                     formStatus.textContent = 'APPLICATION SUBMITTED SUCCESSFULLY! THANK YOU.';
                     formStatus.className = 'form-status success';
                     formStatus.style.display = 'block';
                     admissionForm.reset();
-                } catch (error) {
-                    formStatus.textContent = 'Error: ' + (error.message || 'Unable to submit right now. Please try again later.');
-                    formStatus.className = 'form-status error';
-                    formStatus.style.display = 'block';
-                }
+
+                    // Clean up iframe and form
+                    setTimeout(function () {
+                        document.body.removeChild(iframe);
+                        document.body.removeChild(hiddenForm);
+                    }, 1000);
+                }, 500);
             });
         }
     }
