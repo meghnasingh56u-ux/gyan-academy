@@ -203,6 +203,32 @@ button,
     cursor: pointer;
 }
 
+#form-status {
+    display: block;
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 16px;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid transparent;
+    letter-spacing: 0.04em;
+}
+
+#form-status.success {
+    color: #114d2d;
+    background: #e6f7ed;
+    border-color: #9bd9b6;
+}
+
+#form-status.error {
+    color: #7a1f2f;
+    background: #fdecea;
+    border-color: #f4b0b8;
+}
+
 #admission-form-container label {
     margin-right: 12px;
     color: var(--text);

@@ -15,6 +15,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
             formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+
+        var admissionForm = document.getElementById('admission-form');
+        var formStatus = document.getElementById('form-status');
+
+        if (admissionForm && formStatus) {
+            admissionForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // If browser validation fails, the submit event will still fire in many cases.
+                // Check validity explicitly before showing success.
+                if (!admissionForm.checkValidity()) {
+                    formStatus.textContent = 'Please fill in all required fields correctly.';
+                    formStatus.className = 'form-status error';
+                    return;
+                }
+
+                formStatus.textContent = 'APPLICATION SUBMITTED SUCCESSFULLY! THANK YOU.';
+                formStatus.className = 'form-status success';
+                formStatus.style.display = 'block';
+                formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Optionally reset form fields to clear the form after successful submission.
+                admissionForm.reset();
+            });
+        }
     }
 
     // Image Carousel Handler
